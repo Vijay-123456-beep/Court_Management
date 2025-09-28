@@ -1,0 +1,124 @@
+###Project Overview
+
+Eportal_Case_Management is a full-stack web application for digital court case management. It provides a platform for clients, advocates, 
+judges, and court administrators to manage, track, and process court cases online. The system supports user registration, authentication, 
+case filing, scheduling, real-time notifications, video conferencing, and document management.
+
+###Key Libraries & Frameworks
+
+Frontend
+
+-React: Main UI library.
+-Vite: Fast build tool and dev server.
+-Material-UI (MUI): UI components and theming.
+-React Router: Routing and navigation.
+-Firebase: Authentication and notifications.
+-Framer Motion: Animations.
+-Socket.IO: Real-time notifications.
+-React Bootstrap: Additional UI components.
+-Styled-components, Emotion: CSS-in-JS styling.
+-FontAwesome, React Icons: Icon libraries.
+
+Backend
+
+-Node.js & Express: REST API server.
+-Mongoose: MongoDB ODM for data modeling.
+-Nodemailer: Email notifications.
+-bcrypt: Password hashing.
+-jsonwebtoken: JWT authentication.
+-CORS, cookie-parser, express-session: Middleware for security and session management.
+
+###Features
+
+-User Registration & Authentication (Client, Advocate, Judge, Admin)
+-Role-based Dashboards
+-Case Filing & Tracking
+-Cause List Generation
+-Event Scheduling & Calendar
+-Real-time Notifications (Socket.IO)
+-Video Conferencing (ZegoCloud, custom)
+-Document Upload & Management
+-Order & Judgement Management
+-Email Notifications (Password setup, updates)
+--Profile Management
+-Chat System
+-Payment Integration
+-Admin Controls (User management, judge/advocate assignment)
+
+###Codebase Structure
+
+Eportal_Case_Management/
+│
+├── backend/                # Node.js/Express API
+│   ├── models/             # Mongoose schemas (case, user, event, etc.)
+│   ├── routers/            # Express routers for each role/entity
+│   ├── middleware/         # Auth and role-based middleware
+│   ├── api/                # API entry point
+│   └── script.js           # Main backend server
+│
+├── src/                    # React frontend
+│   ├── App.jsx             # Main app component (routing, notifications)
+│   ├── main.jsx            # Entry point, sets up providers and routes
+│   ├── server.js           # Socket.IO server for real-time features
+│   ├── AuthContext.jsx     # Auth state/context
+│   ├── components/         # Shared UI components
+│   ├── client/             # Client dashboard and pages
+│   ├── advocate/           # Advocate dashboard and pages
+│   ├── judge/              # Judge dashboard and pages
+│   ├── coa/                # Court admin dashboard
+│   ├── Chat/               # Chat system
+│   ├── REGISTER/           # Registration forms
+│   ├── client_dashboard/   # Client-specific features
+│   ├── Admin_dashboard_components/ # Admin features
+│   └── ...                 # Other feature folders
+│
+├── public/                 # Static assets
+├── package.json            # Frontend dependencies/scripts
+├── vite.config.js          # Vite build config
+└── README.md               # Project info
+
+###How It Works
+-User Registration: Users register by role. Clients and advocates receive email links to set their password.
+-Authentication: JWT-based login, with cookies for session management.
+-Case Management: Users can file cases, view their cases, and track status. Admin assigns judges/advocates.
+-Scheduling & Events: Users can schedule and manage events (hearings, meetings) with calendar integration.
+-Real-time Features: Notifications and chat use Socket.IO for instant updates.
+-Video Conferencing: Integrated for remote hearings.
+-Document Handling: Users can upload/download case-related documents.
+-Role-based Dashboards: Each user type sees a tailored dashboard with relevant features.
+
+###Future Enhancements
+
+-Advanced Analytics & Reporting
+-Automated Document Generation (PDFs, Orders)
+-Mobile App Integration
+-Multi-language Support
+-AI-based Case Recommendations
+-Enhanced Security (2FA, audit logs)
+-Payment Gateway Integration
+-Public Cause List Portal
+
+###Dependencies
+Frontend (package.json)
+react, react-dom, @mui/material, @emotion/react, @vitejs/plugin-react, react-router-dom, firebase, framer-motion, socket.io-client, styled-components, react-bootstrap, react-icons, jspdf, pdfkit, react-toastify, dayjs, etc.
+Backend (package.json)
+express, mongoose, nodemailer, bcrypt, jsonwebtoken, cors, cookie-parser, express-session, etc.
+
+###Executed Commands
+Frontend:
+
+-npm install (to install dependencies)
+-npm run dev (to start Vite dev server)
+-npm run build (to build for production)
+-npm run lint (to check code quality)
+
+Backend:
+
+-npm install (to install backend dependencies)
+-npm start (to start backend server)
+
+Socket Server:
+
+-node src/server.js (to start the real-time notification server)
+
+
