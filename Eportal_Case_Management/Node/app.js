@@ -62,30 +62,22 @@ app.listen(5000 , () => {
 //     aadharNumber,
 //     gender}= req.body;
     
-    const passwordEncrypted = await bcrypt.hash(password , 11);
 
 
-//     try{
-//         await User.create({
-//             firstName,
-//             lastName,
-//             username,
-//             password,
-//             dateOfBirth,
-//             email,
-//             phoneNumber,
-//             address,
-//             aadharNumber,
-//             gender,
-//         });
-//         res.send({status : "ok"})
+
+// ...existing code...
+    let passwordEncrypted;
+    try {
+        passwordEncrypted = await bcrypt.hash(password, 11);
+    } catch (err) {
+        return res.status(500).send({ status: "error", message: "Password encryption failed" });
+    }
 
 //     } catch(error){
 //         res.send({status : "Error"})
 //     }
 
-    try{
-
+    try {
         const existingUserByEmail = await User.findOne({ email });
         const existingUserByAadharNumber = await User.findOne({ aadharNumber });
 
@@ -97,12 +89,11 @@ app.listen(5000 , () => {
             return res.send({ error: "User with this Aadhar number already exists!!" });
         }
 
-
         await User.create({
             firstName,
             lastName,
             username,
-            password : passwordEncrypted,
+            password: passwordEncrypted,
             dateOfBirth,
             email,
             phoneNumber,
@@ -110,15 +101,11 @@ app.listen(5000 , () => {
             aadharNumber,
             gender,
         });
-        res.send({status : "ok"})
-
-    } catch(error){
-        res.send({status : "Error"})
+        res.send({ status: "ok" });
+    } catch (error) {
+        res.send({ status: "Error" });
     }
 
-
-    
-// })
 
 // app.post("/registerAdvocate", async(req,res) => {
     
